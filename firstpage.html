@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG Logo Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Product Sans', Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 700px;
+            height: 400px;
+        }
+
+        .block {
+            width: 379px;
+            height: 60px;
+            border-radius: 40px;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform-origin: center;
+            opacity: 0; /* Start hidden */
+        }
+
+        /* GDG colors */
+        .red    { background: #EA4335; }
+        .blue   { background: #4285F4; }
+        .green  { background: #34A853; }
+        .yellow { background: #FBBC05; }
+
+        /* Animation for blocks */
+        .red    { animation: redBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
+        .blue   { animation: blueBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
+        .green  { animation: greenBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
+        .yellow { animation: yellowBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
+
+        /* Keyframes updated for 30-degree rotation */
+        @keyframes redBlockMove {
+            0% { transform: translate(-400px, -120px) rotate(0deg); opacity: 0; }
+            50%, 100% { transform: translate(-190px, -80px) rotate(-30deg); opacity: 1; }
+        }
+        @keyframes blueBlockMove {
+            0% { transform: translate(-400px, 120px) rotate(0deg); opacity: 0; }
+            50%, 100% { transform: translate(-190px, 80px) rotate(30deg); opacity: 1; }
+        }
+        @keyframes greenBlockMove {
+            0% { transform: translate(400px, -120px) rotate(0deg); opacity: 0; }
+            50%, 100% { transform: translate(190px, -80px) rotate(30deg); opacity: 1; }
+        }
+        @keyframes yellowBlockMove {
+            0% { transform: translate(400px, 120px) rotate(0deg); opacity: 0; }
+            50%, 100% { transform: translate(190px, 80px) rotate(-30deg); opacity: 1; }
+        }
+
+        /* Text styling */
+        .text {
+            position: absolute;
+            top: 56%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;   
+            align-items: center;      
+            justify-content: center; 
+            color: white;
+            font-size: 40px;
+            line-height: 1.2;
+            font-weight: 100;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .text span {
+            opacity: 0;
+            display: block;
+            animation: fadeIn 1.5s forwards;
+        }
+        
+        .text span:nth-child(1) { animation-delay: 2s; }
+        .text span:nth-child(2) { animation-delay: 2.2s; }
+        .text span:nth-child(3) { animation-delay: 2.4s; }
+        .text span:nth-child(4) { animation-delay: 2.6s; }
+        .text span:nth-child(5) { animation-delay: 2.8s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block red"></div>
+        <div class="block blue"></div>
+        <div class="block green"></div>
+        <div class="block yellow"></div>
+
+        <div class="text">
+            <span>Google</span>
+            <span>Developers</span>
+            <span>Group</span>
+            <span>On</span>
+            <span>Campus</span>
+        </div>
+    </div>
+</body>
+</html>
