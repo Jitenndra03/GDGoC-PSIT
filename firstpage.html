@@ -15,6 +15,7 @@
             height: 100vh;
             margin: 0;
             font-family: 'Product Sans', Arial, sans-serif;
+            cursor: pointer; /* Makes it clear the page is clickable */
         }
 
         .container {
@@ -46,7 +47,6 @@
         .green  { animation: greenBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
         .yellow { animation: yellowBlockMove 3s ease-in-out forwards; animation-delay: 0.5s; }
 
-        /* Keyframes updated for 30-degree rotation */
         @keyframes redBlockMove {
             0% { transform: translate(-400px, -120px) rotate(0deg); opacity: 0; }
             50%, 100% { transform: translate(-190px, -80px) rotate(-30deg); opacity: 1; }
@@ -75,10 +75,11 @@
             align-items: center;      
             justify-content: center; 
             color: white;
-            font-size: 40px;
-            line-height: 1.2;
-            font-weight: 100;
+            font-size: 42px;
+            line-height: 1.1;
+            font-weight: 500;
             text-align: center;
+            padding-top: 20px;
             white-space: nowrap;
         }
 
@@ -115,5 +116,19 @@
             <span>Campus</span>
         </div>
     </div>
+
+    <script>
+        // Function to redirect to the main page
+        function redirectToIndex() {
+            window.location.href = 'index.html';
+        }
+
+        // Redirect after 5 seconds (5000 milliseconds)
+        setTimeout(redirectToIndex, 5000);
+
+        // Also allow the user to click anywhere to skip the animation and go to the next page
+        document.body.addEventListener('click', redirectToIndex);
+    </script>
+
 </body>
 </html>

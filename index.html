@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-EM">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Developer Group</title>
     <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -173,10 +173,11 @@
         }
 
         /* Specific blob color tints */
-        .red-blob { background-color: rgba(234, 67, 53, 0.25); } 
-        .blue-blob { background-color: rgba(66, 133, 244, 0.25); }
-        .green-blob { background-color: rgba(52, 168, 83, 0.25); }
-        .yellow-blob { background-color: rgba(251, 188, 4, 0.25); }
+        .red-blob { background-color: rgba(238, 60, 63, 0.25); } /* #EE3C3F */
+        .blue-blob { background-color: rgba(81, 112, 223, 0.25); } /* #5170DF */
+        .green-blob { background-color: rgba(86, 223, 107, 0.25); } /* #56DF6B */
+        .yellow-blob { background-color: rgba(237, 233, 103, 0.25); } /* #EDE967 */
+
 
         /* Animation for blobs */
         @keyframes float {
@@ -241,9 +242,21 @@
             max-width: 1140px; 
             margin: 0 auto;
         }
-        .description-panel { text-align: center; padding: 0 2rem; }
-        .description-panel h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #f1f1f1; }
-        .description-panel p { font-size: 1rem; color: #aaa; }
+        .description-panel { 
+            text-align: center; 
+            padding: 0 2rem; 
+        }
+        .description-panel h3 { 
+            font-size: 1.8rem; 
+            margin-bottom: 0.5rem; 
+            color: #f1f1f1; 
+            transition: opacity 0.3s ease;
+        }
+        .description-panel p { 
+            font-size: 1rem; 
+            color: #aaa; 
+            transition: opacity 0.3s ease;
+        }
 
         .card-stack {
             position: relative;
@@ -251,6 +264,11 @@
             max-width: 480px;
             height: 300px;
             margin: 0 auto;
+        }
+        
+        #mentors-section .card-stack {
+            max-width: 300px;
+            height: 380px;
         }
 
         .stack-card {
@@ -298,7 +316,6 @@
         }
         .stack-next-btn:hover { background-color: #333; transform: scale(1.1); }
         .stack-next-btn:active { transform: scale(1); }
-
         #upcoming-section .header-blue-strip { background-color: #4285F4; }
         #photos-section .header-green-strip { background-color: #34A853; }
         #events-section .header-orange-strip { background-color: #FFC943; }
@@ -330,9 +347,46 @@
         .stack-card.next.blob {
             border-radius: 30% 70% 30% 70% / 59% 65% 35% 41%;
         }
+        
+        /* --- MENTOR CARD CONTENT --- */
+        .mentor-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            color: #333;
+        }
+        .mentor-card-content img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 0.8rem; object-fit: cover; border: 3px solid #fff; }
+        .mentor-card-content h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 0.2rem; 
+        }
+        .mentor-card-content p { font-size: 0.9rem; margin-bottom: 0.1rem; color: #555; }
 
-        /* --- TEAM SECTION --- */
+
+        /* --- MENTORS & TEAM SECTION --- */
+        #mentors-section .header-blue-strip-mentors { background-color: #4285F4; }
         #team-section .header-red-strip-team { background-color: #EA4335; }
+
+        #mentors-section .stack-carousel-container {
+             grid-template-columns: 1.5fr 1fr 0.5fr;
+        }
+         #mentors-section .description-panel {
+            text-align: left;
+        }
+        
+        /* INCREASED FONT SIZE FOR MENTOR NAME/DESCRIPTION */
+        #mentor-description-panel h3 {
+            font-size: 1.77rem;
+            margin-bottom: 0.75rem;
+        }
+        #mentor-description-panel p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
 
         .horizontal-showcase-container {
             display: grid;
@@ -343,7 +397,7 @@
             max-width: 1140px; 
             margin: 0 auto;
         }
-
+        
         .team-scroller {
             scroll-behavior: smooth;
             display: flex;
@@ -398,9 +452,9 @@
         .team-member-card.card-blue { background-color: #E6F3FF; }
         .team-member-card.card-yellow { background-color: #FFFDE6; }
         .team-member-card.card-green { background-color: #E6FFE6; }
-        .team-member-card.card-pink { background-color: #FFE6F0; }
+        .team-member-card.card-red { background-color: #ffe6e6; }        
         .team-member-card.card-grey { background-color: #f0f0f0; }
-        
+
         /* --- FOOTER STYLES --- */
         .footer {
             background-color: #111;
@@ -519,12 +573,18 @@
             .social-icons {
                 justify-content: center;
             }
-            .stack-carousel-container {
+            .stack-carousel-container,
+            #mentors-section .stack-carousel-container {
                 grid-template-columns: 1fr; 
                 gap: 1rem;
             }
-            .description-panel {
+            .description-panel,
+            #mentors-section .description-panel {
                 padding: 0 1rem;
+                text-align: center;
+            }
+             .horizontal-showcase-container {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -543,7 +603,7 @@
                 </div>
             </div>
             <div class="title">
-                <h1 class="main-title">Google Developer Group</h1>
+                <h1 class="main-title">Google Developer Group On Campus</h1>
                 <p class="college-name">Pranveer Singh Institute Of Technology</p>
             </div>
         </div>
@@ -563,7 +623,7 @@
         </div>
         <div class="section-content-wrapper">
             <div class="glass-content-panel">
-                <p>GDG Pranveer Singh Institute Of Technology is a dynamic, student-led community for developers, designers, and tech enthusiasts who are passionate about Google's cutting-edge technologies. Our core mission is to create a vibrant ecosystem of learning and collaboration. We bring together passionate individuals to learn, share ideas, and connect with like-minded peers and industry experts. Our events include hands-on workshops, insightful tech talks, collaborative study jams, and exciting hackathons, covering a wide range of topics like Android, Web Development, Cloud Computing, and AI/ML. By fostering knowledge sharing, mentorship, and practical application of skills, we aim to empower the local developer community. Join us to grow your skills, build amazing projects, and network with the innovators of tomorrow!</p>
+                <p>GDG Pranveer Singh Institute Of Technology is a dynamic, student-led community for developers, designers and tech enthusiasts who are passionate about Google's cutting-edge technologies. Our core mission is to create a vibrant ecosystem of learning and collaboration. We bring together passionate individuals to learn, share ideas and connect with like-minded peers and industry experts. Our events include hands-on workshops, insightful tech talks, collaborative study jams and exciting hackathons, covering a wide range of topics like Android, Web Development, Cloud Computing and AI/ML. By fostering knowledge sharing, mentorship and practical application of skills, we aim to empower the local developer community. Join us to grow your skills, build amazing projects and network with the innovators of tomorrow!</p>
             </div>
         </div>
     </section>
@@ -621,7 +681,7 @@
                         <p>A glimpse into our vibrant and collaborative events.</p>
                     </div>
                     <div class="card-stack">
-                        <div class="stack-card skewed-rounded" style="background-color: #34A853;"><div class="card-content">Photo 1</div></div>
+                        <div class="stack-card skewed-rounded" style="background-color: #06a330;"><div class="card-content">Photo 1</div></div>
                         <div class="stack-card skewed-rounded" style="background-color: #FBBC04;"><div class="card-content">Photo 2</div></div>
                         <div class="stack-card skewed-rounded" style="background-color: #EA4335;"><div class="card-content">Photo 3</div></div>
                         <div class="stack-card skewed-rounded" style="background-color: #4285F4;"><div class="card-content">Photo 4</div></div>
@@ -666,13 +726,56 @@
         </div>
     </section>
 
+    <section id="mentors-section" class="section-container">
+        <div class="glass-blob blue-blob"></div>
+        <div class="glass-blob blue-blob"></div>
+        <div class="glass-blob blue-blob"></div>
+        <div class="glass-blob blue-blob"></div>
+        <div class="glass-blob blue-blob"></div>
+
+        <div class="header-blue-strip-mentors">
+            <div class="header-strip-wrapper">
+                <h2 class="section-header-style">MENTORS</h2>
+            </div>
+        </div>
+        <div class="section-content-wrapper">
+            <div class="glass-content-panel">
+                <div class="stack-carousel-container">
+                    <div class="card-stack">
+                        <div class="stack-card team-member-card card-blue">
+                             <div class="mentor-card-content">
+                                <img src="https://via.placeholder.com/120x120/4285F4/FFFFFF?text=Mentor" alt="Mentor 1">
+                                <h3>Dr.Kumar Saurabh </h3>
+                                <p>Club Ambassador</p>
+                             </div>
+                        </div>
+                        <div class="stack-card team-member-card card-grey">
+                            <div class="mentor-card-content">
+                                <img src="https://via.placeholder.com/120x120/FBBC04/FFFFFF?text=Mentor" alt="Mentor 2">
+                                <h3>Dr. Adison Pal</h3>
+                                <p>Co-Club Ambassador</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mentor-description-panel" class="description-panel">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                    
+                    <div class="description-panel">
+                        <button class="stack-next-btn" aria-label="Next Mentor">&rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="team-section" class="section-container">
         <div class="glass-blob red-blob"></div>
         <div class="glass-blob red-blob"></div>
         <div class="glass-blob red-blob"></div>
         <div class="glass-blob red-blob"></div>
         <div class="glass-blob red-blob"></div>
-
         <div class="header-red-strip-team">
             <div class="header-strip-wrapper">
                 <h2 class="section-header-style">THE TEAM</h2>
@@ -686,54 +789,74 @@
                         <p>The dedicated individuals driving our community forward.</p>
                     </div>
                     <div id="team-cards-glass" class="team-scroller">
-                        <div class="team-member-card card-blue">
+                        <div class="team-member-card card-red">
                             <img src="https://via.placeholder.com/120x120/4285F4/FFFFFF?text=Member" alt="Team Member 1">
-                            <h3>Harsh Verdhen Singh</h3><p>Lead Developer</p>
-                            <p class="description">Architecting innovative solutions with Google technologies.</p>
+                            <h3>Harsh Verdhan Singh</h3><p>Organiser</p>
+                            <p class="description">Connecting our members and fostering a vibrant community</p>
                         </div>
-                        <div class="team-member-card card-yellow">
+                        <div class="team-member-card card-blue">
                             <img src="https://via.placeholder.com/120x120/FBBC04/FFFFFF?text=Member" alt="Team Member 2">
-                            <h3>Aditya Shrivastva</h3><p>UI/UX Designer</p>
-                            <p class="description">Crafting intuitive and beautiful user experiences.</p>
+                            <h3>Aditya Srivastava</h3><p>Program Manager</p>
+                            <p class="description">Crafting the innovative mindset into reality.</p>
                         </div>
                         <div class="team-member-card card-green">
                             <img src="https://via.placeholder.com/120x120/34A853/FFFFFF?text=Member" alt="Team Member 3">
-                            <h3>Bhavya Gupta</h3><p>Cloud Engineer</p>
-                            <p class="description">Managing scalable cloud infrastructure on Google Cloud.</p>
+                            <h3>Bhavya Gupta</h3><p>Creative Head</p>
+                            <p class="description">Visualise events into stories.</p>
                         </div>
-                        <div class="team-member-card card-pink">
+                        <div class="team-member-card card-yellow">
                             <img src="https://via.placeholder.com/120x120/EA4335/FFFFFF?text=Member" alt="Team Member 4">
-                            <h3>Jitendra Singh</h3><p>Community Manager</p>
-                            <p class="description">Connecting our members and fostering a vibrant community.</p>
+                            <h3>Jitendra Singh</h3><p>Technical Head</p>
+                            <p class="description">Handles every technical detail like a pro.</p>
                         </div>
-                        <div class="team-member-card card-grey">
+                        <div class="team-member-card card-red">
                             <img src="https://via.placeholder.com/120x120/cccccc/000000?text=Member" alt="Team Member 5">
-                            <h3>Priya Sharma</h3><p>AI/ML Lead</p>
+                            <h3>Aditya Sharma</h3><p>AI/ML Lead</p>
                             <p class="description">Exploring the frontiers of artificial intelligence and machine learning.</p>
                         </div>
                         <div class="team-member-card card-blue">
                             <img src="https://via.placeholder.com/120x120/8ab4f8/FFFFFF?text=Member" alt="Team Member 6">
-                            <h3>Rohan Mehra</h3><p>Web Lead</p>
+                            <h3>Harshit Srivastava</h3><p>Web Lead</p>
                             <p class="description">Driving modern web development and progressive web apps.</p>
                         </div>
                         <div class="team-member-card card-green">
                             <img src="https://via.placeholder.com/120x120/81c995/FFFFFF?text=Member" alt="Team Member 7">
-                            <h3>Ananya Joshi</h3><p>Android Lead</p>
+                            <h3>Kashish Bhadauriya</h3><p>Android Lead</p>
                             <p class="description">Guiding Android development and mobile app innovation.</p>
                         </div>
                          <div class="team-member-card card-yellow">
                             <img src="https://via.placeholder.com/120x120/fdd663/FFFFFF?text=Member" alt="Team Member 8">
-                            <h3>Vikram Rathore</h3><p>Marketing Lead</p>
+                            <h3>Ayush Dwivedi</h3><p>Marketing Lead</p>
                             <p class="description">Spreading the word about our events and community impact.</p>
                         </div>
-                        <div class="team-member-card card-pink">
+                        <div class="team-member-card card-red">
                             <img src="https://via.placeholder.com/120x120/f48fb1/000000?text=Member" alt="Team Member 9">
-                            <h3>Sneha Patil</h3><p>Events Coordinator</p>
+                            <h3>Aayush Pandey</h3><p>Events Coordinator</p>
                             <p class="description">Organizing seamless and engaging community events.</p>
                         </div>
-                        <div class="team-member-card card-grey">
+                        <div class="team-member-card card-blue">
                             <img src="https://via.placeholder.com/120x120/e0e0e0/000000?text=Member" alt="Team Member 10">
-                            <h3>Arjun Desai</h3><p>Content Strategist</p>
+                            <h3>Mudrika Gupta</h3><p>Content Strategist</p>
+                            <p class="description">Developing compelling content to inspire and educate.</p>
+                        </div>
+                         <div class="team-member-card card-green">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/000000?text=Member" alt="Team Member 11">
+                            <h3>Anjali </h3><p>Content Strategist</p>
+                            <p class="description">Developing compelling content to inspire and educate.</p>
+                        </div>
+                         <div class="team-member-card card-yellow">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/000000?text=Member" alt="Team Member 12">
+                            <h3>Aditya Sengar</h3><p>Content Strategist</p>
+                            <p class="description">Developing compelling content to inspire and educate.</p>
+                        </div>
+                         <div class="team-member-card card-red">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/000000?text=Member" alt="Team Member 13">
+                            <h3>Gaurisha Sahai</h3><p>Content Strategist</p>
+                            <p class="description">Developing compelling content to inspire and educate.</p>
+                        </div>
+                         <div class="team-member-card card-blue">
+                            <img src="https://via.placeholder.com/120x120/e0e0e0/000000?text=Member" alt="Team Member 14">
+                            <h3>Bipin Kumar</h3><p>Content Strategist</p>
                             <p class="description">Developing compelling content to inspire and educate.</p>
                         </div>
                     </div>
@@ -744,8 +867,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section>    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
@@ -754,7 +876,7 @@
                 </div>
                 <div class="footer-text">
                     <h3>Google<br>Developer<br>Group</h3>
-                    <p>&copy; 2023 GDG PSIT</p>
+                    <p>&copy; 2025 GDG PSIT</p>
                 </div>
             </div>
             <div class="footer-links">
@@ -764,6 +886,7 @@
                     <li><a href="#upcoming-section">Upcoming</a></li>
                     <li><a href="#photos-section">Photos</a></li>
                     <li><a href="#events-section">Events</a></li>
+                    <li><a href="#mentors-section">Mentors</a></li>
                     <li><a href="#team-section">The Team</a></li>
                 </ul>
             </div>
@@ -784,13 +907,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+             // --- MENTOR DATA (EXPANDED DESCRIPTION) ---
+            const mentorData = [
+                {
+                    name: 'Dr. Kumar Saurabh',
+                    description: 'Guiding our community with years of profound academic and industry experience, fostering innovation and excellence among students. His research in machine learning provides a cutting-edge advantage to our tech projects. He is deeply committed to student success and provides invaluable support for our initiatives.'
+                },
+                {
+                    name: 'Prof. Adison Pal',
+                    description: 'Bridging the critical gap between theoretical knowledge and real-world practical application, ensuring our members are industry-ready. He brings invaluable insights from his extensive career in cloud computing and software architecture. His strong industry connections also help create internship and career opportunities for our members.'
+                }
+            ];
+
             // --- CARD STACK ---
             const stackCarousels = document.querySelectorAll('.card-stack');
+
             stackCarousels.forEach(stack => {
                 const cards = stack.querySelectorAll('.stack-card');
                 if (cards.length === 0) return;
-                const nextBtn = stack.closest('.stack-carousel-container').querySelector('.stack-next-btn');
+                
+                const carouselContainer = stack.closest('.stack-carousel-container');
+                const nextBtn = carouselContainer.querySelector('.stack-next-btn');
                 let currentIndex = 0;
+
+                // --- Special logic for Mentors Section ---
+                const isMentorCarousel = stack.closest('#mentors-section');
+                let mentorDescPanel;
+
+                if (isMentorCarousel) {
+                    mentorDescPanel = carouselContainer.querySelector('#mentor-description-panel');
+                }
+
+                function updateMentorDescription(index) {
+                    if (!mentorDescPanel) return;
+
+                    const titleEl = mentorDescPanel.querySelector('h3');
+                    const descEl = mentorDescPanel.querySelector('p');
+
+                    // Fade out
+                    titleEl.style.opacity = 0;
+                    descEl.style.opacity = 0;
+
+                    setTimeout(() => {
+                        titleEl.textContent = mentorData[index].name;
+                        descEl.textContent = mentorData[index].description;
+                        // Fade in
+                        titleEl.style.opacity = 1;
+                        descEl.style.opacity = 1;
+                    }, 300); // match transition time
+                }
+
                 function updateCardClasses() {
                     cards.forEach((card, index) => {
                         card.classList.remove('active', 'next', 'hidden-back', 'leaving');
@@ -802,7 +968,11 @@
                             card.classList.add('hidden-back');
                         }
                     });
+                     if (isMentorCarousel) {
+                        updateMentorDescription(currentIndex);
+                    }
                 }
+
                 nextBtn.addEventListener('click', () => {
                     const leavingCard = cards[currentIndex];
                     leavingCard.classList.remove('active');
@@ -816,8 +986,11 @@
                     }, 500);
                 });
 
+                // Initial setup
                 updateCardClasses();
             });
+
+            // --- TEAM SCROLLER ---
             const teamContainer = document.getElementById('team-cards-glass');
             if (teamContainer) {
                 document.querySelectorAll('.scroll-btn[data-target="team-cards-glass"]').forEach(arrow => {
